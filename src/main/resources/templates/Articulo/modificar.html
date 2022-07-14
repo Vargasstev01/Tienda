@@ -9,12 +9,13 @@
          <header th:replace="layout/plantilla :: header"/>
            
         <h2>Datos de Clientes</h2>
-        <a th:href="@{/}">Regresar</a>
+        <a th:href="@{/cliente/listado}">Regresar</a>
         <hr>
-        <form th:action="@{/guardarCliente}"
+        <form th:action="@{/cliente/guardar}"
          method="Post"  
          th:object="${cliente}">
              <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+             <input type="hidden" name="idCliente" th:field="*{credita.idCredito}"/>
              
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" th:field="*{nombre}"/>
@@ -27,6 +28,9 @@
             <br>
              <label for="telefono">Telefono:</label>
             <input type="tel" name="telefono" th:field="*{telefono}"/>
+            <br>
+            <label for="limite">Limite de credito:</label>
+            <input type="number" name="limite" th:field="*{credito.limite}"/>
             <hr>
             <input type="submit" name="guardar" value="Guardar"/>
         </form>

@@ -1,42 +1,34 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
     <header th:replace="layout/plantilla :: header"/>
-    
-        <h2>Nuestros Clientes</h2>
-        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
-       <div th:if="${clientes != null and !clientes.empty}">
+    <div class="contenido">
+        <h2>Nuestros Articulos</h2>
+       <div th:if="${articulos != null and !articulos.empty}">
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Correo</th>
-                        <th>Teléfono</th>
-                        <th>Eliminar</th>
-                        <th>Modificar</th>
-
+                        <th>Descripcion</th>
+                        <th>Precio</th>                      
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="cliente : ${clientes}">
-                        <td th:text="${cliente.nombre}"></td>
-                        <td th:text="${cliente.apellidos}"></td>
-                        <td th:text="${cliente.correo}"></td>
-                        <td th:text="${cliente.telefono}"></td>
-                        <td><a th:href="@{/eliminarCliente/}+${cliente.idCliente}">Eliminar</a></td>
-                        <td><a th:href="@{/modificarCliente/}+${cliente.idCliente}">Modificar</a></td>
+                    <tr th:each="articulo : ${articulos}">
+                        <td th:text="${articulo.descripcion}"></td>
+                         <td th:text="${#numbers.formatDecimal(articulo.precio,3,2)}"style="text-align: right"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div th:if="${clientes == null or clientes.empty}">
-            No tenemos lista de clientes que mostrar...
+        <div th:if="${articulos == null or articulos.empty}">
+            No tenemos lista de articulos que mostrar...
         </div>
+    </div>
           <footer th:replace="layout/plantilla :: footer"/>   
     </body>
 </html>
