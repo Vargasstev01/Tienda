@@ -3,37 +3,31 @@
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">
+        <link href="../../static/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         
          <header th:replace="layout/plantilla :: header"/>
-           
-        <h2>Datos de Clientes</h2>
-        <a th:href="@{/cliente/listado}">Regresar</a>
+              <div class="contenido"> 
+        <h2>Datos de Categorias</h2>
+        <a th:href="@{/categoria/listado}">Regresar</a>
         <hr>
-        <form th:action="@{/cliente/guardar}"
+        <form th:action="@{/categoria/guardar}"
          method="Post"  
-         th:object="${cliente}">
-             <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
-             <input type="hidden" name="idCliente" th:field="*{credita.idCredito}"/>
+         th:object="${categoria}">
+             <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
+          
              
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <label for="descripcion">descripcion</label>
+            <input type="text" name="descripcion" th:field="*{descripcion}"/>
             <br>
-             <label for="apellidos">Apellidos:</label>
-            <input type="text" name="apellidos" th:field="*{apellidos}"/>
-            <br>
-             <label for="correo">Correo:</label>
-            <input type="email" name="correo" th:field="*{correo}"/>
-            <br>
-             <label for="telefono">Telefono:</label>
-            <input type="tel" name="telefono" th:field="*{telefono}"/>
-            <br>
-            <label for="limite">Limite de credito:</label>
-            <input type="number" name="limite" th:field="*{credito.limite}"/>
+             <label for="activo">activo</label>
+            <input type="boolean" name="activo" th:field="*{activo}"/>
+            <br
             <hr>
             <input type="submit" name="guardar" value="Guardar"/>
         </form>
+              </div>
         <footer th:replace="layout/plantilla :: footer"/>   
     </body>
 </html>

@@ -3,37 +3,37 @@
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">
+        <link href="../../static/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         
          <header th:replace="layout/plantilla :: header"/>
-           
-        <h2>Datos de Clientes</h2>
-        <a th:href="@{/cliente/listado}">Regresar</a>
+              <div class="contenido"> 
+        <h2>Datos de Articulos</h2>
+        <a th:href="@{/articulo/listado}">Regresar</a>
         <hr>
-        <form th:action="@{/cliente/guardar}"
+        <form th:action="@{/articulo/guardar}"
          method="Post"  
-         th:object="${cliente}">
-             <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
-             <input type="hidden" name="idCliente" th:field="*{credita.idCredito}"/>
+         th:object="${articulo}">
+             <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
+          
              
-            <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <label for="descripcion">descripcion</label>
+            <input type="text" name="descripcion" th:field="*{descripcion}"/>
             <br>
-             <label for="apellidos">Apellidos:</label>
-            <input type="text" name="apellidos" th:field="*{apellidos}"/>
+             <label for="precio">precio</label>
+            <input type="int" name="precio" th:field="*{precio}"/>
             <br>
-             <label for="correo">Correo:</label>
-            <input type="email" name="correo" th:field="*{correo}"/>
+             <label for="existencias">existencias</label>
+            <input type="int" name="correo" th:field="*{existencias}"/>
             <br>
-             <label for="telefono">Telefono:</label>
-            <input type="tel" name="telefono" th:field="*{telefono}"/>
+             <label for="activo">activo</label>
+            <input type="boolean" name="activo" th:field="*{activo}"/>
             <br>
-            <label for="limite">Limite de credito:</label>
-            <input type="number" name="limite" th:field="*{credito.limite}"/>
             <hr>
             <input type="submit" name="guardar" value="Guardar"/>
         </form>
+              </div>
         <footer th:replace="layout/plantilla :: footer"/>   
     </body>
 </html>
