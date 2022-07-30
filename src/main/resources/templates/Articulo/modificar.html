@@ -2,38 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TechShop</title>
-        <meta charset="UTF-8">
-        <link href="../../static/css/menu.css" rel="stylesheet" type="text/css"/>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        
-         <header th:replace="layout/plantilla :: header"/>
-              <div class="contenido"> 
-        <h2>Datos de Articulos</h2>
-        <a th:href="@{/articulo/listado}">Regresar</a>
-        <hr>
-        <form th:action="@{/articulo/guardar}"
-         method="Post"  
-         th:object="${articulo}">
-             <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
-          
-             
-            <label for="descripcion">descripcion</label>
-            <input type="text" name="descripcion" th:field="*{descripcion}"/>
-            <br>
-             <label for="precio">precio</label>
-            <input type="int" name="precio" th:field="*{precio}"/>
-            <br>
-             <label for="existencias">existencias</label>
-            <input type="int" name="correo" th:field="*{existencias}"/>
-            <br>
-             <label for="activo">activo</label>
-            <input type="boolean" name="activo" th:field="*{activo}"/>
-            <br>
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+            <h2>Datos de Articulo</h2>
+            <a th:href="@{/articulo/listado}">[[#{accion.regresar}]]</a>
             <hr>
-            <input type="submit" name="guardar" value="Guardar"/>
-        </form>
-              </div>
-        <footer th:replace="layout/plantilla :: footer"/>   
+            <form th:action="@{/articulo/guardar}"
+                  method="post"
+                  th:object="${articulo}">
+                <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
+                
+                <br>
+                <label for="descripcion">[[#{articulo.descripcion}]]:</label>
+                <input type="text" name="descripcion" th:field="*{descripcion}"/>
+                <br>
+                <label for="detalle">[[#{articulo.detalle}]]:</label>
+                <textarea name="detalle" th:field="*{detalle}" rows="6" cols="50"/>
+                <br>
+                <label for="precio">[[#{articulo.precio}]]:</label>
+                <input type="number" name="precio" th:field="*{precio}"/>
+                <br>
+                <label for="existencias">[[#{articulo.existencias}]]:</label>
+                <input type="number" name="existencias" th:field="*{existencias}"/>
+                <br>
+                <label for="activo">[[#{articulo.activo}]]:</label>
+                <input type="checkbox" name="activo" th:field="*{activo}"/>
+                <hr>
+                <button type="submit" name="guardar" th:text="#{accion.guardar}"/>
+            </form>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

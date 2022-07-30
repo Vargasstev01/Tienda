@@ -1,9 +1,7 @@
  <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
+        <head th:replace="layout/plantilla::head">
         <title>TechShop</title>
-        <meta charset="UTF-8">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
     <header th:replace="layout/plantilla :: header"/>
@@ -23,9 +21,10 @@
                 <tbody>
                     <tr th:each="categoria : ${categorias}">
                         <td th:text="${categoria.descripcion}"></td>
-                        <td th:text="${categoria.activo}"></td>
-                        <td><a th:href="@{/categoria/eliminar}+${categoria.idCategoria}">Eliminar</a></td>
-                        <td><a th:href="@{/categoria/modificar}+${categoria.idCategoria}">Modificar</a></td>
+                        <td style="text-align: center"><input type="checkbox" name="activo"
+                                                              th:checked="${categoria.activo}" disabled="true"></td>
+                        <td><a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}">Eliminar</a></td>
+                        <td><a th:href="@{/categoria/modificar/}+${categoria.idCategoria}">Modificar</a></td>
                     </tr>
                 </tbody>
             </table>

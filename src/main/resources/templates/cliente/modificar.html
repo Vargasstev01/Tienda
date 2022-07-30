@@ -3,7 +3,7 @@
     <head>
         <title>TechShop</title>
         <meta charset="UTF-8">
-        <link href="../../static/css/menu.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         
@@ -16,7 +16,7 @@
          method="Post"  
          th:object="${cliente}">
              <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
-             <input type="hidden" name="idCliente" th:field="*{credita.idCredito}"/>
+             <input type="hidden" name="idCliente" th:field="*{credito.idCredito}"/>
              
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" th:field="*{nombre}"/>

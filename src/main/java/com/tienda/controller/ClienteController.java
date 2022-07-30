@@ -18,7 +18,20 @@ public class ClienteController {
   @Autowired
   private ClienteService clienteService;
     
-
+@GetMapping("/cliente/busqueda")
+    public String busqueda(Cliente cliente) {
+        return "/cliente/buscar";
+    }
+    @PostMapping("/cliente/buscar")
+    public String guardarCliente(Cliente cliente, Model model) {
+        cliente = clienteService.getByApellidos(cliente);
+        if (cliente != null) {
+            model.addAttribute("cliente", cliente);
+            return "/cliente/modificar";
+        } else {
+            return "/cliente/buscar";
+        }
+    }
     @GetMapping("/cliente/listado")
     public String inicio(Model model) { 
         var clientes = clienteService.getClientes();
